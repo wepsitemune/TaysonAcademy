@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Tayson Academy - نظام إدارة أكاديمية الكيك بوكسينج" />
+<title>Tayson Academy | نظام إدارة أكاديمية الكيك بوكسينج</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff3b30'/%3E%3Cpath d='M19 13v14a13 13 0 0 0 26 0V13M11 21h8M45 21h8M32 40v12M23 52h18' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="pages.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>TAYSON ACADEMY <i>✦</i> KICKBOXING <i>✦</i> DISCIPLINE <i>✦</i> STRENGTH <i>✦</i> RESPECT <i>✦</i> TAYSON ACADEMY <i>✦</i> KICKBOXING <i>✦</i> DISCIPLINE <i>✦</i> STRENGTH <i>✦</i> RESPECT <i>✦</i> </span>
+    <span>TAYSON ACADEMY <i>✦</i> KICKBOXING <i>✦</i> DISCIPLINE <i>✦</i> STRENGTH <i>✦</i> RESPECT <i>✦</i> TAYSON ACADEMY <i>✦</i> KICKBOXING <i>✦</i> DISCIPLINE <i>✦</i> STRENGTH <i>✦</i> RESPECT <i>✦</i> </span>
+  </div>
+</div>
+
+<div class="app">
+  <div class="screen-overlay" id="screenOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+          <path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M3 8h3"/><path d="M18 8h3"/><path d="M12 15v6"/><path d="M8 21h8"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">TAYSON</div>
+        <div class="brand-sub">ACADEMY · كيك بوكسينج</div>
+      </div>
+    </div>
+
+    <div class="nav-label">القائمة الرئيسية</div>
+    <nav class="nav" id="nav" aria-label="التنقل الرئيسي"></nav>
+
+    <div class="side-card">
+      <div class="side-card-top">
+        <span class="live-dot"></span>
+        <span>الموسم الحالي</span>
+      </div>
+      <strong>انطلق بقوة</strong>
+      <p>12 متدرباً يتدربون اليوم في أكاديميتك</p>
+      <div class="side-progress"><i style="width:78%"></i></div>
+      <div class="side-card-foot"><span>إشغال الحصص</span><b>78%</b></div>
+    </div>
+
+    <div class="side-footer">
+      <div class="mini-avatar">TA</div>
+      <div>
+        <b>أحمد طيسون</b>
+        <span>مدير الأكاديمية</span>
+      </div>
+      <button class="icon-btn tiny" id="settingsShortcut" aria-label="الإعدادات">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-3v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-2-2 .1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4v-3h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-2 .1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.6V4h3v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 2 2-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.6 1h.2v3h-.2a1.7 1.7 0 0 0-1.6 1z"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="page-heading">
+        <h2 id="pageTitle">لوحة التحكم</h2>
+        <span id="pageSubtitle">نظرة عامة على أداء الأكاديمية اليوم</span>
+      </div>
+      <div class="top-actions">
+        <div class="top-date" id="topDate"></div>
+        <div class="notif-wrap">
+          <button class="icon-btn" id="notifBtn" aria-label="التنبيهات">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+            <span class="notif-dot" id="notifDot"></span>
+          </button>
+          <div class="notif-panel" id="notifPanel"></div>
+        </div>
+        <div class="top-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="globalSearch" type="search" placeholder="بحث سريع عن متدرب..." aria-label="بحث سريع" />
+        </div>
+        <button class="btn btn-primary btn-sm" data-action="add-member">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" width="16" height="16"><path d="M12 5v14M5 12h14"/></svg>
+          متدرب جديد
+        </button>
+      </div>
+    </header>
+
+    <div class="content" id="content">
+
+      <!-- DASHBOARD -->
+      <section class="page active" data-page="dashboard">
+        <div class="hero reveal">
+          <div class="hero-noise"></div>
+          <div class="hero-inner">
+            <div class="eyebrow"><span></span> TAYSON ACADEMY · EST. 2024</div>
+            <h1>تدرّب بشراسة.<br><em>انتصر بثقة.</em></h1>
+            <p>نظام إدارة متكامل لأكاديمية الكيك بوكسينج: المتدربون، الاشتراكات، الحصص، الإيرادات — كلها في مكان واحد.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-go="members">إدارة المتدربين</button>
+              <button class="btn btn-ghost" data-go="schedule">شاهد جدول الحصص</button>
+            </div>
+          </div>
+          <div class="hero-badge"><b>TAYSON</b><span>KICKBOXING ACADEMY</span></div>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat stat-red reveal">
+            <div class="stat-top"><span class="stat-icon" id="icMembers"></span><span class="stat-trend up">+12%</span></div>
+            <div class="stat-label">إجمالي المتدربين</div>
+            <div class="stat-value" id="statMembers">0</div>
+            <div class="stat-foot">مسجّل في الأكاديمية</div>
+          </div>
+          <div class="stat stat-green reveal">
+            <div class="stat-top"><span class="stat-icon" id="icActive"></span><span class="stat-trend up">+8%</span></div>
+            <div class="stat-label">اشتراكات نشطة</div>
+            <div class="stat-value" id="statActive">0</div>
+            <div class="stat-foot"><span id="statExpired">0</span> اشتراك منتهي</div>
+          </div>
+          <div class="stat stat-amber reveal">
+            <div class="stat-top"><span class="stat-icon" id="icRevenue"></span><span class="stat-trend up">+24%</span></div>
+            <div class="stat-label">إيرادات هذا الشهر</div>
+            <div class="stat-value" id="statRevenue">0</div>
+            <div class="stat-foot"><span class="currency-label">ج.م</span> • مبيعات الاشتراكات</div>
+          </div>
+          <div class="stat stat-blue reveal">
+            <div class="stat-top"><span class="stat-icon" id="icSessions"></span><span class="stat-trend neutral">اليوم</span></div>
+            <div class="stat-label">حصص اليوم</div>
+            <div class="stat-value" id="statSessions">6</div>
+            <div class="stat-foot">3 مدربين • 6 حصص</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">الإيرادات الشهرية</div><div class="card-sub">تحليل مبيعات الاشتراكات خلال العام</div></div>
+              <span class="chip chip-red">آخر 12 شهر</span>
+            </div>
+            <div class="bars" id="revenueBars"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">معدل الحضور</div><div class="card-sub">متوسط التزام المتدربين بالحصص</div></div>
+              <span class="chip chip-green">ممتاز</span>
+            </div>
+            <div class="donut-wrap">
+              <div class="donut-holder">
+                <svg viewBox="0 0 120 120" class="donut">
+                  <circle cx="60" cy="60" r="48" class="donut-track"/>
+                  <circle cx="60" cy="60" r="48" class="donut-value" id="donutValue" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 60 60)"/>
+                </svg>
+                <div class="donut-center"><b id="attendancePct">0%</b><span>الحضور</span></div>
+              </div>
+              <div class="donut-legend">
+                <div><span class="legend-dot" style="background:var(--accent)"></span><span>حاضر</span><b>87%</b></div>
+                <div><span class="legend-dot" style="background:#3a4150"></span><span>غائب</span><b>13%</b></div>
+                <div class="legend-note">تحسّن بنسبة <b>+5%</b> عن الشهر الماضي</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">اشتراكات تنتهي قريباً</div><div class="card-sub">خلال 7 أيام — يلزم متابعتها</div></div>
+              <button class="link-btn" data-go="subscriptions">عرض الكل ←</button>
+            </div>
+            <div class="list" id="expiringList"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">آخر العمليات المالية</div><div class="card-sub">أحدث المدفوعات المسجّلة</div></div>
+              <button class="link-btn" data-go="payments">عرض الكل ←</button>
+            </div>
+            <div class="list" id="recentPayments"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">حصص اليوم</div><div class="card-sub">جدول التدريب اليومي</div></div>
+              <button class="link-btn" data-go="schedule">الجدول الكامل ←</button>
+            </div>
+            <div class="list" id="schedulePreview"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><div class="card-title">توزيع الأحزمة</div><div class="card-sub">مستويات المتدربين</div></div>
+              <span class="chip chip-amber">8 مستويات</span>
+            </div>
+            <div class="belts" id="beltBars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEMBERS -->
+      <section class="page" data-page="members">
+        <div class="page-head reveal">
+          <div><h2>المتدربون</h2><p>إدارة شاملة لقائمة المتدربين وحالات اشتراكاتهم</p></div>
+          <button class="btn btn-primary" data-action="add-member">+ إضافة متدرب</button>
+        </div>
+        <div class="card reveal">
+          <div class="toolbar">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="memberSearch" type="search" placeholder="ابحث بالاسم أو رقم الهاتف..." />
+            </div>
+            <select id="memberStatus" aria-label="حالة الاشتراك">
+              <option value="all">كل الحالات</option><option value="active">نشط</option><option value="soon">ينتهي قريباً</option><option value="expired">منتهي</option>
+            </select>
+            <select id="memberBelt" aria-label="الحزام"><option value="all">كل الأحزمة</option></select>
+            <button class="btn btn-ghost btn-sm" data-action="export-members">تصدير CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>المتدرب</th><th>رقم الهاتف</th><th>الباقة</th><th>الحزام</th><th>الحالة</th><th>متبقي</th><th>الإجراءات</th></tr></thead>
+              <tbody id="membersBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="membersFoot"></div>
+        </div>
+      </section>
+
+      <!-- SUBSCRIPTIONS -->
+      <section class="page" data-page="subscriptions">
+        <div class="page-head reveal">
+          <div><h2>الاشتراكات والباقات</h2><p>إدارة باقات الأكاديمية ومتابعة اشتراكات المتدربين</p></div>
+          <button class="btn btn-primary" data-action="add-member">+ اشتراك جديد</button>
+        </div>
+        <div class="plans-grid" id="plansGrid"></div>
+        <div class="card reveal" style="margin-top:16px">
+          <div class="card-head">
+            <div><div class="card-title">الاشتراكات الحالية</div><div class="card-sub">نسبة متبقية من مدة الاشتراك</div></div>
+            <span class="chip chip-red" id="subsCount">0 اشتراك</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>المتدرب</th><th>الباقة</th><th>البداية</th><th>الانتهاء</th><th>المدة المتبقية</th><th>الحالة</th></tr></thead>
+              <tbody id="subsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHEDULE -->
+      <section class="page" data-page="schedule">
+        <div class="page-head reveal">
+          <div><h2>جدول الحصص</h2><p>برنامج التدريب الأسبوعي للفرق والتصنيفات المختلفة</p></div>
+          <button class="btn btn-ghost" data-action="contact-coach">تواصل مع المدربين</button>
+        </div>
+        <div class="day-tabs" id="dayTabs"></div>
+        <div class="classes-grid" id="classesGrid"></div>
+        <div class="promo reveal" style="background-image:linear-gradient(90deg,rgba(9,11,16,.94),rgba(9,11,16,.25)),url('istockphoto-2225074143-1024x1024.jpg')">
+          <div>
+            <span class="eyebrow"><span></span> SPECIAL PROGRAM</span>
+            <h3>معسكر الكيك بوكسينج المكثف</h3>
+            <p>6 أسابيع تدريب مكثف مع كابتن طيسون — تبدأ يوم السبت القادم. الأماكن محدودة.</p>
+          </div>
+          <button class="btn btn-primary" data-action="add-member">احجز مكانك</button>
+        </div>
+      </section>
+
+      <!-- COACHES -->
+      <section class="page" data-page="coaches">
+        <div class="page-head reveal">
+          <div><h2>طاقم التدريب</h2><p>مدربون معتمدون بخبرة قتالية وتدريبية دولية</p></div>
+          <span class="chip chip-amber">3 مدربين</span>
+        </div>
+        <div class="coaches-grid" id="coachesGrid"></div>
+      </section>
+
+      <!-- PAYMENTS -->
+      <section class="page" data-page="payments">
+        <div class="page-head reveal">
+          <div><h2>المدفوعات</h2><p>تتبّع جميع العمليات المالية وإيرادات الأكاديمية</p></div>
+          <button class="btn btn-ghost btn-sm" data-action="export-payments">تصدير CSV</button>
+        </div>
+        <div class="mini-stats" id="paymentStats"></div>
+        <div class="card reveal">
+          <div class="toolbar">
+            <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="paymentSearch" type="search" placeholder="بحث باسم المتدرب..." /></div>
+            <div class="chips" id="paymentFilters">
+              <button class="chip-btn active" data-payfilter="all">الكل</button>
+              <button class="chip-btn" data-payfilter="today">اليوم</button>
+              <button class="chip-btn" data-payfilter="month">هذا الشهر</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>المتدرب</th><th>الباقة</th><th>طريقة الدفع</th><th>التاريخ</th><th>المبلغ</th></tr></thead>
+              <tbody id="paymentsBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="paymentsFoot"></div>
+        </div>
+      </section>
+
+      <!-- REPORTS -->
+      <section class="page" data-page="reports">
+        <div class="page-head reveal">
+          <div><h2>التقارير والإحصاءات</h2><p>تحليلات أداء الأكاديمية والمؤشرات الرئيسية</p></div>
+          <button class="btn btn-ghost btn-sm" data-action="export-payments">تصدير التقرير</button>
+        </div>
+        <div class="mini-stats" id="reportStats"></div>
+        <div class="card reveal">
+          <div class="card-head"><div><div class="card-title">الإيرادات خلال العام</div><div class="card-sub">مقارنة شهرية بمبيعات الاشتراكات</div></div><span class="chip chip-red">2026</span></div>
+          <div class="bars big" id="reportBars"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-head"><div><div class="card-title">حالة الاشتراكات</div><div class="card-sub">توزيع المتدربين حسب الحالة</div></div></div>
+            <div class="donut-wrap">
+              <div class="donut-holder">
+                <svg viewBox="0 0 120 120" class="donut"><circle cx="60" cy="60" r="48" class="donut-track"/><circle cx="60" cy="60" r="48" class="donut-value" id="reportDonut" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 60 60)"/></svg>
+                <div class="donut-center"><b id="reportActivePct">0%</b><span>نشط</span></div>
+              </div>
+              <div class="donut-legend" id="reportLegend"></div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head"><div><div class="card-title">ملخص شهري</div><div class="card-sub">آخر 6 أشهر</div></div></div>
+            <div class="list" id="reportMonthly"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page" data-page="settings">
+        <div class="page-head reveal">
+          <div><h2>إعدادات الأكاديمية</h2><p>تخصيص بيانات المنشأة وأسعار الباقات</p></div>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-head"><div><div class="card-title">بيانات الأكاديمية</div><div class="card-sub">تظهر في جميع أنحاء النظام</div></div></div>
+            <form id="settingsForm">
+              <div class="form-row"><div><label>اسم الأكاديمية</label><input name="name" required /></div><div><label>رقم الهاتف</label><input name="phone" /></div></div>
+              <div class="form-row" style="margin-top:14px"><div><label>العنوان</label><input name="address" /></div><div><label>رمز العملة</label><input name="currency" /></div></div>
+              <button class="btn btn-primary" style="margin-top:18px" type="submit">حفظ الإعدادات</button>
+            </form>
+          </div>
+          <div class="card reveal">
+            <div class="card-head"><div><div class="card-title">أسعار الباقات</div><div class="card-sub">تعديل قيمة الاشتراك لكل باقة</div></div></div>
+            <div id="plansSettings" class="plans-settings"></div>
+          </div>
+        </div>
+        <div class="card reveal danger-zone">
+          <div><div class="card-title">منطقة الخطر</div><div class="card-sub">إعادة ضبط النظام إلى البيانات التجريبية الأصلية</div></div>
+          <button class="btn btn-danger" data-action="reset-data">إعادة ضبط البيانات</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="modal-root" id="modalRoot"></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="app.js"></script>
+<script src="views.js"></script>
+</body>
+</html>
